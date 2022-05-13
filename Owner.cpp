@@ -70,7 +70,7 @@ class Owner:public FootballClub{
 		return roe;
 	} 
 	bool bankruptcyRisk(){
-		if(ROE<0.15)
+		if(this.ROE()<0.15)
 			return true;
 		else 
 			return false;
@@ -82,7 +82,10 @@ class Owner:public FootballClub{
 		getline(cin,mis);
 		return mis;
 	}
-	double calculateWage();
+	double calculateWage(){
+		double cal=netProfit-(investmentAmount+publicDebt);
+		return cal;
+	};
 	bool signingCondition(){
 		if (bankruptcyRisk==false)
 			return true;
