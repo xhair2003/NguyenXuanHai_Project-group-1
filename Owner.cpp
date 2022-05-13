@@ -1,13 +1,33 @@
 #include "FootballClub.cpp"
 
 class Owner:public FootballClub{
-	public:
+	private:
 		string corporTaxCode;
 		long long netWorth;
 		long long netProfit;
 		string nameOfOwner;
 		long long publicDebt;
 		long long investmentAmount;
+	public:
+		string getTaxCode(){
+			return this->corporTaxCode;
+		}
+		long long getWorth(){
+			return this->netWorth;
+		}
+		long long getProfit(){
+			return this->netProfit;
+		}
+		string getnameOwner(){
+			return this->nameOfOwner;
+		}
+		long long getDebt(){
+			return this->publicDebt;
+		}
+		long long getAmount(){
+			return this->investmentAmount;
+		}
+		
 	Owner(){
 		this->corporTaxCode=" ";
 		this->netWorth=0;
@@ -56,6 +76,20 @@ class Owner:public FootballClub{
 			return false;
 	}
 	string mission(){
-		
+		string mis;
+		cin.ignore();
+		cout<<"Enter the quest content:";
+		getline(cin,mis);
+		return mis;
 	}
+	double calculateWage();
+	bool signingCondition(){
+		if (bankruptcyRisk==false)
+			return true;
+		else 
+			return false;
+	}
+	void riskOfTerminateContract();
+	void oppRenewContract();
+	void valueBringingLastSeason();
 };

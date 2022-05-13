@@ -1,8 +1,15 @@
 
 class FootballClub{
-	public:
+	private:
 		string idMembers;
 		string contractTerm;
+	public:
+		string getMember(){
+			return this->idMembers;
+		}
+		string getcontract(){
+			return this->contractTerm;
+		}
 	FootballClub(){
 		this->idMembers = " ";
 		this->contractTerm = " ";
