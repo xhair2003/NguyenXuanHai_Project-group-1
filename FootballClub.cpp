@@ -4,10 +4,16 @@ class FootballClub{
 		string idMembers;
 		string contractTerm;
 	public:
-		string getMember(){
+		void setMember(string idMembers){
+			this->idMembers = idMembers;
+		}
+		string getMember(string idMembers){
 			return this->idMembers;
 		}
-		string getcontract(){
+		void setcontract(string contractTerm){
+			this->contractTerm = contractTerm;
+		}
+		string getcontract(string contractTerm){
 			return this->contractTerm;
 		}
 	FootballClub(){
@@ -16,7 +22,7 @@ class FootballClub{
 	}
 	void input(){
 		cout<<"--------------------------------------------------"<<endl;
-		cout<<"==============INPUT THE FOOTBALL CLUB============="<<endl;
+		cout<<"==============ENTER THE PROLIFE FOOTBALL CLUB============="<<endl;
 		cout<<"Enter the ID.Members: ";
 		getline(cin,idMembers);
 		cout<<"Enter the ContractTerm: ";
@@ -24,7 +30,7 @@ class FootballClub{
 	}
 	void output(){
 		cout<<"--------------------------------------------------"<<endl;
-		cout<<"=============OUTPUT THE FOOTBALL CLUB============="<<endl;
+		cout<<"=============OUTPUT THE PROLIFE FOOTBALL CLUB============="<<endl;
 		cout<<"*ID of Members: "<<idMembers<<endl;
 		cout<<"*Contract Term: "<<contractTerm<<endl;
 	}
