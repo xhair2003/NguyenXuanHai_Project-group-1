@@ -2,12 +2,12 @@
 
 class Owner:public FootballClub{
 	private:
-		string corporTaxCode;
-		long long netWorth;
-		long long netProfit;
-		string nameOfOwner;
-		long long publicDebt;
-		long long investmentAmount;
+		string corporTaxCode;//ma thue doanh nghiep
+		long long netWorth;//gia tri rong
+		long long netProfit;//loi nhuan rong
+		string nameOfOwner;//ten chu so huu
+		long long publicDebt;//no cong
+		long long investmentAmount;//tien dau tu 
 	public:
 		void setTaxCode(string corporTaxCode){
 			this->corporTaxCode=corporTaxCode;
@@ -59,7 +59,8 @@ class Owner:public FootballClub{
 		cout<<"--------------------------------------------------"<<endl;
 		cout<<"============INPUT THE PROFILE OF OWNER============"<<endl;
 		cout<<"Enter the Corpor TaxCode: ";
-		getline(cin,this->corporTaxCode);
+		cin>>this->corporTaxCode;
+		cin.ignore();
 		cout<<"Enter the Net Worth: ";
 		cin>>this->netWorth;
 		cout<<"Enter the Net Profit: ";
@@ -86,9 +87,10 @@ class Owner:public FootballClub{
 	double ROE(){
 		double roe=this->netProfit/this->netWorth;
 		return roe;
-	} 
+	}
 	bool bankruptcyRisk(){
-		if(this->ROE()<0.15)
+		//publicDebt..
+		if(this->publicDebt>=1000000)
 			return true;
 		else 
 			return false;
@@ -103,14 +105,29 @@ class Owner:public FootballClub{
 	double calculateWage(){
 		double cal=this->netProfit-(this->investmentAmount+this->publicDebt);
 		return cal;
-	};
+	}
 	bool signingCondition(){
-		if (this->bankruptcyRisk==false)
+		//publicDebt & ROE 
+		if (this->publicDebt<200000 || this->ROE>0.15)
 			return true;
 		else 
 			return false;
 	}
-	void riskOfTerminateContract();
-	void oppRenewContract();
-	void valueBringingLastSeason();
+	void riskOfTerminateContract(){
+		//ROE & publicDebt & calWage
+		if(this->ROE<0.15 || this->calculateWage<50000 || this->publicDebt>200000){
+			cout<<"Contract Terminated";
+		}else 
+			cout<<"The contract is still valid";
+	}	
+	void oppRenewContract(){
+		string renew;
+		cout<<"Enter the contract renewal period: ";
+		getline(cin,renew); 
+	}
+	void valueBringingLastSeason(){
+		string valuelS;
+		cout<<"Enter the value brought in last season";
+		getline(cin,valuelS);
+	}
 };

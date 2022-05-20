@@ -1,4 +1,3 @@
-
 class FootballClub{
 	private:
 		string idMembers;
@@ -24,15 +23,16 @@ class FootballClub{
 		cout<<"--------------------------------------------------"<<endl;
 		cout<<"==============ENTER THE PROLIFE FOOTBALL CLUB============="<<endl;
 		cout<<"Enter the ID.Members: ";
-		getline(cin,idMembers);
+		cin>>this->idMembers;
+		cin.ignore();
 		cout<<"Enter the ContractTerm: ";
-		getline(cin,contractTerm);
+		getline(cin,this->contractTerm);
 	}
 	void output(){
 		cout<<"--------------------------------------------------"<<endl;
 		cout<<"=============OUTPUT THE PROLIFE FOOTBALL CLUB============="<<endl;
-		cout<<"*ID of Members: "<<idMembers<<endl;
-		cout<<"*Contract Term: "<<contractTerm<<endl;
+		cout<<"*ID of Members: "<<this->idMembers<<endl;
+		cout<<"*Contract Term: "<<this->contractTerm<<endl;
 	}
 	virtual string mission() = 0;
 	virtual double calculateWage() = 0;
@@ -40,6 +40,5 @@ class FootballClub{
 	virtual void riskOfTerminateContract() = 0;
 	virtual void oppRenewContract() = 0;
 	virtual void valueBringingLastSeason() = 0;
-	
 };
 
