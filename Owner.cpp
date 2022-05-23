@@ -16,13 +16,13 @@ class Owner:public FootballClub{
 			return this->corporTaxCode;
 		}
 		void setWorth(long long netWorth){
-			 this->netWorth=netWorth
+			 this->netWorth=netWorth;
 		}
 		long long getWorth(){
 			return this->netWorth;
 		}
 		void setProfit(long long netProfit){
-			 this->netProfith=netProfit
+			 this->netProfit=netProfit;
 		}
 		long long getProfit(){
 			return this->netProfit;
@@ -90,17 +90,17 @@ class Owner:public FootballClub{
 	}
 	bool bankruptcyRisk(){
 		//publicDebt..
-		if(this->publicDebt>=1000000)
+		if(this->publicDebt>=1000000||this->ROE()<0.15)
 			return true;
 		else 
 			return false;
 	}
 	string mission(){
 		string mis;
-		cin.ignore();
-		cout<<"Enter the quest content:";
+		cout<<"Enter the task for the current time: ";
 		getline(cin,mis);
-		return mis;
+		cout<<"-The task for the current time: "<<mis<<endl;
+		
 	}
 	double calculateWage(){
 		double cal=this->netProfit-(this->investmentAmount+this->publicDebt);
@@ -108,26 +108,36 @@ class Owner:public FootballClub{
 	}
 	bool signingCondition(){
 		//publicDebt & ROE 
-		if (this->publicDebt<200000 || this->ROE>0.15)
+		if (this->publicDebt<200000 && this->ROE()>0.15)
 			return true;
 		else 
 			return false;
 	}
 	void riskOfTerminateContract(){
+		cout<<"*Risk Of Terminate Contract: ";
 		//ROE & publicDebt & calWage
-		if(this->ROE<0.15 || this->calculateWage<50000 || this->publicDebt>200000){
-			cout<<"Contract Terminated";
+		if(this->signingCondition()==false || this->publicDebt>100000){
+			cout<<"\n-Contract Terminated!!\n";
 		}else 
-			cout<<"The contract is still valid";
+			cout<<"\n-The contract is still valid!!\n";
 	}	
 	void oppRenewContract(){
-		string renew;
-		cout<<"Enter the contract renewal period: ";
-		getline(cin,renew); 
+		cout<<"*OOP Renew Contract: ";
+		if(this->signingCondition()==true && this->publicDebt<100000){
+			string renew;
+			cin.ignore();
+			cout<<"\nEnter the contract renewal period: ";
+			getline(cin,renew);
+			cout<<"-The contract renewal period: "<<renew<<endl;
+		}else 
+			cout<<"\nThe contract has been terminated!!!\n";
 	}
 	void valueBringingLastSeason(){
 		string valuelS;
-		cout<<"Enter the value brought in last season";
+		cout<<"Enter the value brought in last season: ";
 		getline(cin,valuelS);
+		cout <<"-The value brought in last season: "<<valuelS<<endl;
+		this->mission();
+		
 	}
 };
