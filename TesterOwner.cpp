@@ -1,4 +1,50 @@
-#include "FootballClub.cpp"
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+class FootballClub {
+	private:
+		string idMembers;
+		string contractTerm;
+	public:
+		void setMember(string idMembers){
+			this->idMembers = idMembers;
+		}
+		string getMember(string idMembers){
+			return this->idMembers;
+		}
+		void setcontract(string contractTerm){
+			this->contractTerm = contractTerm;
+		}
+		string getcontract(string contractTerm){
+			return this->contractTerm;
+		}
+	FootballClub(){
+		this->idMembers = " ";
+		this->contractTerm = " ";
+	}
+	void input(){
+		cout<<"----------------------------------------------------------"<<endl;
+		cout<<"==============ENTER THE PROLIFE FOOTBALL CLUB============="<<endl;
+		cout<<"Enter the ID.Members: ";
+		cin>>this->idMembers;
+		cin.ignore();
+		cout<<"Enter the ContractTerm: ";
+		getline(cin,this->contractTerm);
+	}
+	void output(){
+		cout<<"----------------------------------------------------------"<<endl;
+		cout<<"=============OUTPUT THE PROLIFE FOOTBALL CLUB============="<<endl;
+		cout<<"*ID of Members: "<<this->idMembers<<endl;
+		cout<<"*Contract Term: "<<this->contractTerm<<endl;
+	}
+	virtual string mission() = 0;
+	virtual long long calculateWage() = 0;
+	virtual bool signingCondition() = 0;
+	virtual void riskOfTerminateContract() = 0;
+	virtual void oppRenewContract() = 0;
+	virtual bool valueBringingLastSeason() = 0;
+};
 
 class Owner:public FootballClub{
 	private:
@@ -56,7 +102,7 @@ class Owner:public FootballClub{
 	}
 	void input(){
 		FootballClub::input();
-		cout<<"--------------------------------------------------"<<endl;
+		cout<<"----------------------------------------------------------"<<endl;
 		cout<<"============INPUT THE PROFILE OF OWNER============"<<endl;
 		cout<<"Enter the Corpor TaxCode: ";
 		cin>>this->corporTaxCode;
@@ -75,7 +121,7 @@ class Owner:public FootballClub{
 	}
 	void output(){
 		FootballClub::output();
-		cout<<"--------------------------------------------------"<<endl;
+		cout<<"----------------------------------------------------------"<<endl;
 		cout<<"===========OUTPUT THE PROFILE OF OWNER============"<<endl;
 		cout<<"*Corpor TaxCode: "<<this->corporTaxCode<<endl;
 		cout<<"*Net Worth: "<<this->netWorth<<endl;
@@ -133,3 +179,32 @@ class Owner:public FootballClub{
 		return true;
 	}
 };
+class ListOwner{
+	public: 
+		Owner on[100];
+		int n;
+	void Listin(){
+		cout<<"Enter the number of candidate owners: ";
+		cin>>n;
+		for(int i=1;i<=n;i++){
+			cout<<"Owner "<<i<<" : "<<endl;
+			on[i].input();
+		}
+	}
+	void Listout(){
+		cout<<"----------------------------------------------------------------"<<endl;
+		for(int i=0;i<=n;i++){
+			on[i].output();
+			on[i].riskOfTerminateContract();
+		}
+	}
+};
+int main() {
+	Owner on[100];
+	ListOwner Lo;
+	Lo.Listin();
+	Lo.Listout();
+	
+	return 0;
+}
+

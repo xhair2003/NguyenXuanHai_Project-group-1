@@ -35,10 +35,10 @@ class FootballClub{
 		cout<<"*Contract Term: "<<this->contractTerm<<endl;
 	}
 	virtual string mission() = 0;
-	virtual double calculateWage() = 0;
+	virtual long long calculateWage() = 0;
 	virtual bool signingCondition() = 0;
 	virtual void riskOfTerminateContract() = 0;
 	virtual void oppRenewContract() = 0;
-	virtual void valueBringingLastSeason() = 0;
+	virtual bool valueBringingLastSeason() = 0;
 };
 
