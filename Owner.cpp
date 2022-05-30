@@ -56,7 +56,7 @@ class Owner:public FootballClub{
 	}
 	void input(){
 		FootballClub::input();
-		cout<<"--------------------------------------------------"<<endl;
+		cout<<"----------------------------------------------------------"<<endl;
 		cout<<"============INPUT THE PROFILE OF OWNER============"<<endl;
 		cout<<"Enter the Corpor TaxCode: ";
 		cin>>this->corporTaxCode;
@@ -75,7 +75,7 @@ class Owner:public FootballClub{
 	}
 	void output(){
 		FootballClub::output();
-		cout<<"--------------------------------------------------"<<endl;
+		cout<<"----------------------------------------------------------"<<endl;
 		cout<<"===========OUTPUT THE PROFILE OF OWNER============"<<endl;
 		cout<<"*Corpor TaxCode: "<<this->corporTaxCode<<endl;
 		cout<<"*Net Worth: "<<this->netWorth<<endl;
@@ -89,7 +89,7 @@ class Owner:public FootballClub{
 		return roe;
 	}
 	bool bankruptcyRisk(){
-		if(this->publicDebt>=(this->netProfit+this->netWorth)||this->ROE()<0.02)
+		if(this->publicDebt>=(this->netProfit+this->netWorth) && this->ROE()<0.02)
 			return true;
 		else 
 			return false;
@@ -105,7 +105,7 @@ class Owner:public FootballClub{
 	}
 	bool signingCondition(){
 		//publicDebt & ROE 
-		if (this->publicDebt<((this->netProfit+this->netWorth)/10) && this->ROE()>0.15)
+		if (this->publicDebt<=((this->netProfit+this->netWorth)*2) && this->ROE()>0.15)
 			return true;
 		else 
 			return false;
@@ -130,6 +130,6 @@ class Owner:public FootballClub{
 			cout<<"\nThe contract has been terminated!!!\n";
 	}
 	bool valueBringingLastSeason(){
-		return true;
+		return false;
 	}
 };
