@@ -1,6 +1,7 @@
 #include<iostream>
 #include<algorithm>
 #include<vector>
+#include<fstream> 
 #include<string.h>
 #include<bits/stdc++.h>
 using namespace std;
@@ -32,9 +33,25 @@ class FootballClub {
 				}
 				break;
 			case 2 :
-				if(day < 1 || day > 29) {
-					return false;
-				}
+				if (year % 4 == 0) {
+  					if (year % 100 == 0) {
+   						 if (year % 400 == 0) {
+							if(day < 1 || day > 29) {
+								return false;
+							}
+					}else{
+						if(day < 1 || day > 28) {
+								return false;
+					}}
+				}else {
+						if(day < 1 || day > 29) {
+								return false;
+							}
+				}}else{
+						if(day < 1 || day > 28) {
+								return false;
+				}}
+					
 				break;
 			default :
 				return false;
@@ -166,6 +183,10 @@ class Owner:public FootballClub{
 		cin.ignore();
 		cout<<"Enter the Name of Owner: ";
 		getline(cin,this->nameOfOwner);
+		for(int i=0;i<=10;i++){
+			if(this->nameOfOwner[i]>=97&&this->nameOfOwner[i]<=122)
+				this->nameOfOwner[i]-=32;
+		}
 		cout<<"Enter the Public Debt: ";
 		cin>>this->publicDebt;
 		cout<<"Enter the Investment Amount: ";
