@@ -64,13 +64,13 @@ class FootballClub {
 		void setMember(string idMembers){
 			this->idMembers = idMembers;
 		}
-		string getMember(string idMembers){
+		string getMember(){
 			return this->idMembers;
 		}
 		void setcontract(string contractTerm){
 			this->contractTerm = contractTerm;
 		}
-		string getcontract(string contractTerm){
+		string getcontract(){
 			return this->contractTerm;
 		}
 	FootballClub(){
@@ -292,6 +292,19 @@ class ListOwner{
 			on.input();
 			v.push_back(on);
 		}
+		ofstream fo("C:\\Users\\My PC\\Documents\\Group_project\\OC.txt");
+		if(fo.is_open()){
+			for(int i=0;i<v.size();i++){
+				fo<<"-----------------Owner Candidate"<<i<<"---------------"<<endl;
+				fo<<"*ID.Members: "<<v[i].getMember()<<endl;
+				fo<<"*Contract Term: "<<v[i].getcontract()<<endl;
+				fo<<"*Corpor TaxCode: "<<v[i].getTaxCode()<<endl;
+				fo<<"*Name of Owner: "<<v[i].getnameOwner()<<endl;
+				fo<<endl;
+			}
+			fo.close();
+		}else 
+			cout<<"File not found!!!!";
 	}
 	void outputList(){
 		cout<<"----------------------------------------------------------------"<<endl<<endl<<endl;
@@ -327,7 +340,6 @@ class ListOwner{
 				cout << "\n\noop!!!There are no suitable candidates in all that you have entered !!!\n\nWe need to find other candidates\n\nEnter the number of candidates you have selected : ";
 			}
 		}
-		
 		void scriptOfOwner() {
 			cout << "Our team currently has no owner !!! \n\nYou need to enter the number of potential candidates for the position of team owner : ";
 			this->inputList();
@@ -338,6 +350,22 @@ class ListOwner{
 				this->chooseTheOwner();
 			}
 			cout << "\n\nWe reviewed each person's details and the fan vote took place !!!\n\nWe would like to announce the official owner of the team is Mr."<<v[0].getnameOwner();
+			ofstream fo("C:\\Users\\My PC\\Documents\\Group_project\\ON.txt");
+			if(fo.is_open()){
+				fo<<"--------------------Official owner------------------ "<<endl;
+				fo<<"*ID.Members: "<<v[0].getMember()<<endl;
+				fo<<"*Contract Term: "<<v[0].getcontract()<<endl;
+				fo<<"*Corpor TaxCode: "<<v[0].getTaxCode()<<endl;
+				fo<<"*Name of Owner: "<<v[0].getnameOwner()<<endl;
+				fo<<"*Net Worth: "<<v[0].getWorth()<<endl;
+				fo<<"*Net Profit: "<<v[0].getProfit()<<endl;
+				fo<<"*Public Debt: "<<v[0].getDebt()<<endl;
+				fo<<"*Investment Amount: "<<v[0].getAmount()<<endl;
+				fo<<endl;
+			
+			fo.close();
+		}else
+			cout<<"File not found!!!!";
 		}
 };
 int main() {

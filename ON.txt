@@ -1,0 +1,10 @@
+--------------------Official owner------------------ 
+*ID.Members: ON01
+*Contract Term: 22/12/2032
+*Corpor TaxCode: DN01
+*Name of Owner: MAFIA
+*Net Worth: 1
+*Net Profit: 100
+*Public Debt: 2
+*Investment Amount: 50
+

@@ -6,13 +6,13 @@ class FootballClub{
 		void setMember(string idMembers){
 			this->idMembers = idMembers;
 		}
-		string getMember(string idMembers){
+		string getMember(){
 			return this->idMembers;
 		}
 		void setcontract(string contractTerm){
 			this->contractTerm = contractTerm;
 		}
-		string getcontract(string contractTerm){
+		string getcontract(){
 			return this->contractTerm;
 		}
 	FootballClub(){
