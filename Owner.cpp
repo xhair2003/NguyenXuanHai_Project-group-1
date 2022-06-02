@@ -55,61 +55,85 @@ class Owner:public FootballClub{
 		this->investmentAmount=0;
 	}
 	void input(){
+		cout << endl << endl << "INPUT PROFILE : "<< endl << endl;
 		FootballClub::input();
-		cout<<"----------------------------------------------------------"<<endl;
-		cout<<"============INPUT THE PROFILE OF OWNER============"<<endl;
-		cout<<"Enter the Corpor TaxCode: ";
+		cout<<"Enter the business tax code:: ";
 		cin>>this->corporTaxCode;
 		cin.ignore();
-		cout<<"Enter the Net Worth: ";
+		for(int i=0;i<=10;i++){
+			if(this->corporTaxCode[i]>=97&&this->corporTaxCode[i]<=122)
+				this->corporTaxCode[i]-=32;
+		}
+		cout<<"Total current net worth: ";
 		cin>>this->netWorth;
-		cout<<"Enter the Net Profit: ";
+		cout<<"Total current net profit: ";
 		cin>>this->netProfit;
 		cin.ignore();
 		cout<<"Enter the Name of Owner: ";
 		getline(cin,this->nameOfOwner);
+		for(int i=0;i<=10;i++){
+			if(this->nameOfOwner[i]>=97&&this->nameOfOwner[i]<=122)
+				this->nameOfOwner[i]-=32;
+		}
 		cout<<"Enter the Public Debt: ";
 		cin>>this->publicDebt;
-		cout<<"Enter the Investment Amount: ";
+		cout<<"The amount of money you intend to invest when They are elected: ";
 		cin>>this->investmentAmount;
 	}
+	
+	
 	void output(){
+		cout << endl << endl << "PROFILE : " << endl << endl;
 		FootballClub::output();
-		cout<<"----------------------------------------------------------"<<endl;
-		cout<<"===========OUTPUT THE PROFILE OF OWNER============"<<endl;
 		cout<<"*Corpor TaxCode: "<<this->corporTaxCode<<endl;
-		cout<<"*Net Worth: "<<this->netWorth<<endl;
-		cout<<"*Net Profit: "<<this->netProfit<<endl;
+		cout<<"*Net Worth: "<<this->netWorth<<"$"<<endl;
+		cout<<"*Net Profit: "<<this->netProfit<<"$"<<endl;
 		cout<<"*Name of Owner: "<<this->nameOfOwner<<endl;
-		cout<<"*Public Debt: "<<this->publicDebt<<endl;
-		cout<<"*Investment Amount: "<<this->investmentAmount<<endl;
+		cout<<"*Public Debt: "<<this->publicDebt<<"$"<<endl;
+		cout<<"*Investment Amount: "<<this->investmentAmount<<"$"<<endl;
 	}
+	
+
+	
 	double ROE(){
 		double roe=this->netProfit/this->netWorth;
 		return roe;
 	}
+	
+	// bankruptcyRisk da hoan thien
+	
 	bool bankruptcyRisk(){
 		if(this->publicDebt>=(this->netProfit+this->netWorth) && this->ROE()<0.02)
 			return true;
 		else 
 			return false;
 	}
+	
+	// mission da hoan thien
+	
 	string mission(){
 		string mis = "Make club success!!";
 		return mis;
 	}
+	
+	// calculateWage chua hoan thien
+	
 	long long calculateWage(){
-		//chua hoan thien
 		double cal=this->netProfit-(this->investmentAmount+this->publicDebt);
 		return cal;
 	}
+	
+	//signingCondition da hoan thien
+	
 	bool signingCondition(){
-		//publicDebt & ROE 
-		if (this->publicDebt<=((this->netProfit+this->netWorth)*2) && this->ROE()>0.15)
+		if (this->publicDebt<=((this->netProfit+this->netWorth)*2) && this->ROE()>0.15 && this->getAmount()!=0)
 			return true;
 		else 
 			return false;
 	}
+	
+	//riskOfTerminateContract chua hoan thien
+	
 	void riskOfTerminateContract(){
 		cout<<"*Risk Of Terminate Contract: ";
 		//ROE & publicDebt & calWage
@@ -117,7 +141,10 @@ class Owner:public FootballClub{
 			cout<<"\n-Contract Terminated!!\n";
 		}else 
 			cout<<"\n-The contract is still valid!!\n";
-	}	
+	}
+	
+	// oppRenewContract chua hoan thien
+		
 	void oppRenewContract(){
 		cout<<"*OOP Renew Contract: ";
 		if(this->signingCondition()==true){
@@ -129,6 +156,9 @@ class Owner:public FootballClub{
 		}else 
 			cout<<"\nThe contract has been terminated!!!\n";
 	}
+	
+	// valueBringingLastSeason chua hoan thien
+	
 	bool valueBringingLastSeason(){
 		return false;
 	}

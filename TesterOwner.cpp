@@ -85,8 +85,9 @@ class FootballClub {
 				this->idMembers[i]-=32;
 		}
 		cin.ignore();
-		cout<<"Enter the ContractTerm(Format DD/MM/YYYY): \n\n";
+		cout<<"Enter the Contract Term :\n";
 		int day,month,year;
+		cout<<"-----------------------\n"; 
 		do {
 			cout << "Day : ";
 			cin >> day;
@@ -95,6 +96,7 @@ class FootballClub {
 			cout << "Year : ";
 			cin >> year;
 		}while(checkDate(day,month,year)==false);
+		cout<<"-----------------------\n";
 		string sday,smonth,syear;
 		sday = to_string(day);
 		smonth = to_string(month);
@@ -169,16 +171,16 @@ class Owner:public FootballClub{
 	void input(){
 		cout << endl << endl << "INPUT PROFILE : "<< endl << endl;
 		FootballClub::input();
-		cout<<"Enter the Corpor TaxCode: ";
+		cout<<"Enter the business tax code:: ";
 		cin>>this->corporTaxCode;
 		cin.ignore();
 		for(int i=0;i<=10;i++){
 			if(this->corporTaxCode[i]>=97&&this->corporTaxCode[i]<=122)
 				this->corporTaxCode[i]-=32;
 		}
-		cout<<"Enter the Net Worth: ";
+		cout<<"Total current net worth: ";
 		cin>>this->netWorth;
-		cout<<"Enter the Net Profit: ";
+		cout<<"Total current net profit: ";
 		cin>>this->netProfit;
 		cin.ignore();
 		cout<<"Enter the Name of Owner: ";
@@ -189,7 +191,7 @@ class Owner:public FootballClub{
 		}
 		cout<<"Enter the Public Debt: ";
 		cin>>this->publicDebt;
-		cout<<"Enter the Investment Amount: ";
+		cout<<"The amount of money you intend to invest when They are elected: ";
 		cin>>this->investmentAmount;
 	}
 	
@@ -199,11 +201,11 @@ class Owner:public FootballClub{
 		cout << endl << endl << "PROFILE : " << endl << endl;
 		FootballClub::output();
 		cout<<"*Corpor TaxCode: "<<this->corporTaxCode<<endl;
-		cout<<"*Net Worth: "<<this->netWorth<<endl;
-		cout<<"*Net Profit: "<<this->netProfit<<endl;
+		cout<<"*Net Worth: "<<this->netWorth<<"$"<<endl;
+		cout<<"*Net Profit: "<<this->netProfit<<"$"<<endl;
 		cout<<"*Name of Owner: "<<this->nameOfOwner<<endl;
-		cout<<"*Public Debt: "<<this->publicDebt<<endl;
-		cout<<"*Investment Amount: "<<this->investmentAmount<<endl;
+		cout<<"*Public Debt: "<<this->publicDebt<<"$"<<endl;
+		cout<<"*Investment Amount: "<<this->investmentAmount<<"$"<<endl;
 	}
 	
 	// ROE da hoan thien
@@ -357,10 +359,10 @@ class ListOwner{
 				fo<<"*Contract Term: "<<v[0].getcontract()<<endl;
 				fo<<"*Corpor TaxCode: "<<v[0].getTaxCode()<<endl;
 				fo<<"*Name of Owner: "<<v[0].getnameOwner()<<endl;
-				fo<<"*Net Worth: "<<v[0].getWorth()<<endl;
-				fo<<"*Net Profit: "<<v[0].getProfit()<<endl;
-				fo<<"*Public Debt: "<<v[0].getDebt()<<endl;
-				fo<<"*Investment Amount: "<<v[0].getAmount()<<endl;
+				fo<<"*Net Worth: "<<v[0].getWorth()<<"$"<<endl;
+				fo<<"*Net Profit: "<<v[0].getProfit()<<"$"<<endl;
+				fo<<"*Public Debt: "<<v[0].getDebt()<<"$"<<endl;
+				fo<<"*Investment Amount: "<<v[0].getAmount()<<"$"<<endl;
 				fo<<endl;
 			
 			fo.close();
