@@ -83,6 +83,7 @@ class FootballClub {
 		for(int i=0;i<=10;i++){
 			if(this->idMembers[i]>=97&&this->idMembers[i]<=122)
 				this->idMembers[i]-=32;
+				
 		}
 		cin.ignore();
 		cout<<"Enter the Contract Term :\n";
@@ -171,7 +172,7 @@ class Owner:public FootballClub{
 	void input(){
 		cout << endl << endl << "INPUT PROFILE : "<< endl << endl;
 		FootballClub::input();
-		cout<<"Enter the business tax code:: ";
+		cout<<"Enter the business tax code: ";
 		cin>>this->corporTaxCode;
 		cin.ignore();
 		for(int i=0;i<=10;i++){
@@ -292,12 +293,17 @@ class ListOwner{
 			cout<<"\n\nCandidate "<<i+1<<" : ";
 			Owner on;
 			on.input();
+			if(v.size()>=1) {
+				while(on.getMember()==v[i-1].getMember() || on.getTaxCode()==v[i-1].getTaxCode()) {
+					on.input();
+				}
+			}
 			v.push_back(on);
 		}
 		ofstream fo("C:\\Users\\My PC\\Documents\\Group_project\\OC.txt");
 		if(fo.is_open()){
 			for(int i=0;i<v.size();i++){
-				fo<<"-----------------Owner Candidate"<<i<<"---------------"<<endl;
+				fo<<"-----------------Owner Candidate"<<i+1<<"---------------"<<endl;
 				fo<<"*ID.Members: "<<v[i].getMember()<<endl;
 				fo<<"*Contract Term: "<<v[i].getcontract()<<endl;
 				fo<<"*Corpor TaxCode: "<<v[i].getTaxCode()<<endl;
@@ -353,9 +359,10 @@ class ListOwner{
 			}
 			cout << "\n\nWe reviewed each person's details and the fan vote took place !!!\n\nWe would like to announce the official owner of the team is Mr."<<v[0].getnameOwner();
 			ofstream fo("C:\\Users\\My PC\\Documents\\Group_project\\ON.txt");
+		
 			if(fo.is_open()){
 				fo<<"--------------------Official owner------------------ "<<endl;
-				fo<<"*ID.Members: "<<v[0].getMember()<<endl;
+				fo<<"*ID.Members: ON01"<<endl;
 				fo<<"*Contract Term: "<<v[0].getcontract()<<endl;
 				fo<<"*Corpor TaxCode: "<<v[0].getTaxCode()<<endl;
 				fo<<"*Name of Owner: "<<v[0].getnameOwner()<<endl;

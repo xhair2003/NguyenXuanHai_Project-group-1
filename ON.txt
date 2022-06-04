@@ -1,10 +1,10 @@
 --------------------Official owner------------------ 
-*ID.Members: ON01
-*Contract Term: 22/12/2033
-*Corpor TaxCode: DN01
-*Name of Owner: MARIGIUE
-*Net Worth: 1102332$
-*Net Profit: 90000000$
-*Public Debt: 122000$
-*Investment Amount: 1000000$
+*ID.Members: ON
+*Contract Term: 1/1/2023
+*Corpor TaxCode: 1
+*Name of Owner: 1
+*Net Worth: 1$
+*Net Profit: 1$
+*Public Debt: 1$
+*Investment Amount: 1$
 

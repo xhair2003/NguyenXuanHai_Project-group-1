@@ -1,6 +1,6 @@
------------------Owner Candidate0---------------
-*ID.Members: ON01
-*Contract Term: 22/12/2033
-*Corpor TaxCode: DN01
-*Name of Owner: MARIGIUE
+-----------------Owner Candidate1---------------
+*ID.Members: 1
+*Contract Term: 1/1/2023
+*Corpor TaxCode: 1
+*Name of Owner: 1
 
