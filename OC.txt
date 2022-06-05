@@ -1,6 +1,6 @@
 -----------------Owner Candidate1---------------
-*ID.Members: 1
-*Contract Term: 1/1/2023
+*ID.Members: CD132
+*Contract Term: 1/1/2323
 *Corpor TaxCode: 1
 *Name of Owner: 1
 

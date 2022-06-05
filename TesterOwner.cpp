@@ -28,7 +28,7 @@ class FootballClub {
 			case 6 :
 			case 9 :
 			case 11 :
-				if(day < 1 || day > 30) {
+				if(day < 1 || day > 30 ) {
 					return false;
 				}
 				break;
@@ -79,14 +79,19 @@ class FootballClub {
 	}
 	void input(){
 		cout<<"Enter the ID.Members: ";
-		cin>>this->idMembers;
-		for(int i=0;i<=10;i++){
-			if(this->idMembers[i]>=97&&this->idMembers[i]<=122)
-				this->idMembers[i]-=32;
-				
+		string a = "CD";
+		string b;
+		do{
+			cout<<"\n-------------------";
+			cout<<"\nEnter last three number of ID:  ";
+			for(int i=0 ;i<3;i++){
+			cin>>b[i];
 		}
+		}while(b[0]<48 || b[0]>57 ||b[1]<48 || b[1]>57 ||b[2]<48 || b[2]>57);
+		idMembers = a + b[0]+b[1]+b[2];
+		cout<<"-------------------";
 		cin.ignore();
-		cout<<"Enter the Contract Term :\n";
+		cout<<"\nEnter the Contract Term :\n";
 		int day,month,year;
 		cout<<"-----------------------\n"; 
 		do {
@@ -109,11 +114,9 @@ class FootballClub {
 		cout<<"*Contract Term: "<<this->contractTerm<<endl;
 	}
 	virtual string mission() = 0;
-	virtual long long calculateWage() = 0;
 	virtual bool signingCondition() = 0;
-	virtual void riskOfTerminateContract() = 0;
 	virtual void oppRenewContract() = 0;
-	virtual bool valueBringingLastSeason() = 0;
+
 };
 class Owner:public FootballClub{
 	private:
@@ -272,12 +275,7 @@ class Owner:public FootballClub{
 		}else 
 			cout<<"\nThe contract has been terminated!!!\n";
 	}
-	
-	// valueBringingLastSeason chua hoan thien
-	
-	bool valueBringingLastSeason(){
-		return false;
-	}
+
 };
 class ListOwner{
 //	private:
@@ -295,6 +293,7 @@ class ListOwner{
 			on.input();
 			if(v.size()>=1) {
 				while(on.getMember()==v[i-1].getMember() || on.getTaxCode()==v[i-1].getTaxCode()) {
+					cout<<"\n\nEnter again!!";
 					on.input();
 				}
 			}
@@ -324,7 +323,7 @@ class ListOwner{
 	
 	void chooseTheOwner() {
 		for(int i=0 ; i<v.size() ; i++) {
-			if(v[i].bankruptcyRisk()==true || v[i].signingCondition()==false) {
+			if(v[i].bankruptcyRisk()==true || v[i].signingCondition()==false || v[i].getAmount()<= 400000000) {
 				v.erase(v.begin()+i);
 				i--;
 			}
@@ -356,10 +355,12 @@ class ListOwner{
 			while(checkOwner==0) {
 				this->inputList();
 				this->chooseTheOwner();
+				
 			}
 			cout << "\n\nWe reviewed each person's details and the fan vote took place !!!\n\nWe would like to announce the official owner of the team is Mr."<<v[0].getnameOwner();
 			ofstream fo("C:\\Users\\My PC\\Documents\\Group_project\\ON.txt");
-		
+			v[0].getMember()="ON01";
+			
 			if(fo.is_open()){
 				fo<<"--------------------Official owner------------------ "<<endl;
 				fo<<"*ID.Members: ON01"<<endl;
