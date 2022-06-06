@@ -1,10 +1,10 @@
 --------------------Official owner------------------ 
-*ID.Members: OC01
+*ID.Members: ON01
 *Contract Term: 22/12/2033
 *Corpor TaxCode: 1
-*Name of Owner: 11
+*Name of Owner: 1
 *Net Worth: 1$
 *Net Profit: 1$
 *Public Debt: 1$
-*Investment Amount: 1$
+*Investment Amount: 20000000000$
 

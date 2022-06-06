@@ -11,8 +11,43 @@ class FootballClub {
 		string idMembers;
 		string contractTerm;
 	public:
-		bool checkDate(int day, int month, int year) {
-		switch (month) {
+		bool checkday(string day){
+			for(int i=0;i<day.length();i++){
+				if(day[i]<48||day[i]>57){
+					return false;
+				}
+				else 
+					return true;
+			}
+		}
+	bool checkmonth(string  month){
+			for(int i=0;i<month.length();i++){
+				if(month[i]<48||month[i]>57){
+					return false;
+				}
+				else 
+					return true;
+			}
+		}
+	bool checkyear(string year){
+	
+			for(int i=0;i<year.length();i++){
+				if(year[i]<48||year[i]>57){
+					return false;
+				}
+				else 
+					return true;
+			}
+		}	
+	bool checkDate(string  day, string  month, string  year) {
+		if(checkday(day)==false || checkmonth(month)==false ||checkyear(year)==false ){
+		 return false;
+		}
+			
+		int iday = stoi(day);
+		int imonth = stoi(month);
+		int iyear = stoi(year);
+		switch (imonth) {
 			case 1 :
 			case 3:
 			case 5 :
@@ -20,7 +55,7 @@ class FootballClub {
 			case 8 :
 			case 10 :
 			case 12 :
-					if(day<1 || day > 31) {
+					if(iday<1 || iday > 31) {
 						return false;
 					}
 					break;
@@ -28,27 +63,27 @@ class FootballClub {
 			case 6 :
 			case 9 :
 			case 11 :
-				if(day < 1 || day > 30 ) {
+				if(iday < 1 || iday > 30 ) {
 					return false;
 				}
 				break;
 			case 2 :
-				if (year % 4 == 0) {
-  					if (year % 100 == 0) {
-   						 if (year % 400 == 0) {
-							if(day < 1 || day > 29) {
+				if (iyear % 4 == 0) {
+  					if (iyear % 100 == 0) {
+   						 if (iyear % 400 == 0) {
+							if(iday < 1 || iday > 29) {
 								return false;
 							}
 					}else{
-						if(day < 1 || day > 28) {
+						if(iday < 1 || iday > 28) {
 								return false;
 					}}
 				}else {
-						if(day < 1 || day > 29) {
+						if(iday < 1 || iday > 29) {
 								return false;
 							}
 				}}else{
-						if(day < 1 || day > 28) {
+						if(iday < 1 || iday > 28) {
 								return false;
 				}}
 					
@@ -56,7 +91,7 @@ class FootballClub {
 			default :
 				return false;
 		}
-		if(year <= 2022) {
+		if(iyear <= 2022) {
 			return false;
 		} 
 		return true;
@@ -92,7 +127,7 @@ class FootballClub {
 		cout<<"-------------------";
 		cin.ignore();
 		cout<<"\nEnter the Contract Term :\n";
-		int day,month,year;
+		string  day,month,year;
 		cout<<"-----------------------\n"; 
 		do {
 			cout << "Day : ";
@@ -103,11 +138,7 @@ class FootballClub {
 			cin >> year;
 		}while(checkDate(day,month,year)==false);
 		cout<<"-----------------------\n";
-		string sday,smonth,syear;
-		sday = to_string(day);
-		smonth = to_string(month);
-		syear = to_string(year);
-		this->contractTerm = sday+'/'+smonth+'/'+syear;
+		contractTerm = day+'/'+month+'/'+year;
 	}
 	void output(){
 		cout<<"*ID of Members: "<<this->idMembers<<endl;
