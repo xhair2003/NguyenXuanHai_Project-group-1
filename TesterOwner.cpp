@@ -245,7 +245,7 @@ class Owner:public FootballClub{
 	//signingCondition da hoan thien
 	
 	bool signingCondition(){
-		if (this->publicDebt<=((this->netProfit+this->netWorth)*2) && this->ROE()>0.15 && this->getAmount()!=0)
+		if (this->publicDebt<=((this->netProfit+this->netWorth)*2) && this->ROE()>0.15 && this->getAmount()!=0 && this->getAmount()>=1000000000)
 			return true;
 		else 
 			return false;
